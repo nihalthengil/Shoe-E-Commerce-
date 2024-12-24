@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import LogIn from "./SignUp&LogIn/LogIn";
-import SignUp from "./SignUp&LogIn/SignUp";
-import Home from "./Component/Home";
-import Navbar from "./Component/Navbar";
-import NewArrival from "./Component/Category/NewArrival";
-import Details from "./Component/Category/Details";
+import Navbar from "./User/Component/Navbar";
+import Home from "./User/Component/Home";
+import SignUp from "./User/SignUp&LogIn/SignUp";
+import LogIn from "./User/SignUp&LogIn/LogIn";
+import NewArrival from "./User/Component/Category/NewArrival";
+import Details from "./User/Component/Category/Details";
+import Brand from "./User/Component/Category/Brand";
+import Cart from "./User/Component/Cart/Cart";
+import Checkout from "./User/Component/Cart/Checkout";
 import ContextProvider from "./Context/Context";
-import Cart from "./Component/Cart/Cart";
-import Checkout from "./Component/Cart/Checkout";
-import Brand from "./Component/Category/Brand";
+
 function App() {
   return (
     <div>

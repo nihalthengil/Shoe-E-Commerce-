@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Context } from "../../Context/Context";
+import { Context } from "../../../Context/Context";
 import { useContext } from "react";
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';

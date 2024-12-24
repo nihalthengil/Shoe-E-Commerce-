@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 
 export default function Navbar() {
   const { products, username, userId, SetCart, setProducts } =

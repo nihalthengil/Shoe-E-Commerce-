@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Context } from "../../Context/Context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Context } from "../../../Context/Context";
 
 const Cart = () => {
   const { Cart, SetCart, userId } = useContext(Context);
@@ -29,7 +29,7 @@ const Cart = () => {
     <div className="flex justify-center flex-col pt-24">
       <h1 className="text-2xl font-bold">Shopping Cart</h1>
       {Cart.length > 0 ? (
-        <table className="w-1/2 mx-auto text-left">
+        <table className="w-[80%] mx-auto text-left">
           <thead>
             <tr className="border-b-2">
               <th>Product</th>
@@ -40,14 +40,14 @@ const Cart = () => {
             </tr>
           </thead>
           {Cart.map((item) => (
-            <tbody key={item.id}>
+            <tbody key={item.id} className="text-left">
               <tr className="border-b-2">
                 <td>
                   <img src={item.img[0]} alt="" className="h-full w-32" />
                 </td>
                 <td>
-                  <p>{item.brand}</p>
-                  <p>{item.name}</p>
+                  <p className="font-bold">{item.brand}</p>
+                  <p className="font-semibold">{item.name}</p>
                   <br />
                   <p>Size: {item.size}</p>
                 </td>

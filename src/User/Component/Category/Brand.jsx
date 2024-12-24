@@ -1,11 +1,13 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Context } from "../../Context/Context";
+import React from "react";
+import { useContext } from "react";
+import { Context } from "../../../Context/Context";
+import { useNavigate, useParams } from "react-router-dom";
 
-const NewArrival = () => {
+const Brand = () => {
+  const { products } = useContext(Context);
+  const { brand } = useParams();
+  const BrandData = products.filter((item) => item.brand === brand);
   const Navigate = useNavigate();
-  const { products, SetProducts } = useContext(Context);
 
   const HandleClick = (id) => {
     Navigate(`/details/${id}`);
@@ -15,10 +17,10 @@ const NewArrival = () => {
     <div className="bg-gray-100 py-10">
       <div className="max-w-7xl mx-auto pt-2 mt-2 px-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-8 sticky top-16  h-16  bg-gray-100 p-3 ">
-          New Arrival
+          {products.Brand}
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-          {products.map((data) => (
+          {BrandData.map((data) => (
             <div
               key={data.id}
               className="bg-white border rounded-lg shadow hover:shadow-lg duration-150 hover:scale-105 ease-in cursor-pointer"
@@ -47,4 +49,4 @@ const NewArrival = () => {
   );
 };
 
-export default NewArrival;
+export default Brand;

@@ -5,7 +5,76 @@
       "name": "nihal ahammed",
       "email": "nihalap@gmail.com",
       "password": "12345678",
-      "cart": [],
+      "cart": [
+        {
+          "id": "2fd4",
+          "size": "9",
+          "name": "Asics Gel-Kayano 14 'Pure Gold/Cold Moss'",
+          "price": "14,999",
+          "gender": "Woman",
+          "type": "Casual",
+          "brand": "Asics",
+          "img": [
+            "https://images.vegnonveg.com/resized/700X573/12299/gel-kayano-14-pure-goldcold-moss-gold-673b185294637.jpg",
+            "https://images.vegnonveg.com/resized/700X573/12299/gel-kayano-14-pure-goldcold-moss-gold-673b1853088d8.jpg",
+            "https://images.vegnonveg.com/resized/700X573/12299/gel-kayano-14-pure-goldcold-moss-gold-673b1852eb9f0.jpg",
+            "https://images.vegnonveg.com/resized/700X573/12299/gel-kayano-14-pure-goldcold-moss-gold-673b1852d43be.jpg",
+            "https://images.vegnonveg.com/resized/700X573/12299/gel-kayano-14-pure-goldcold-moss-gold-673b1852ad495.jpg"
+          ],
+          "qty": 1
+        },
+        {
+          "id": "b1c8",
+          "size": "8",
+          "name": "Nike Dunk Low Retro",
+          "price": "8,295",
+          "gender": "Man",
+          "brand": "Nike",
+          "type": "Casual",
+          "img": [
+            "https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2Ff3%2Fb6%2Fshoes-1-1-69503.jpg?fit=max&w=1080&q=90",
+            "https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F0b%2F28%2Fshoes-1-2-17fc8.jpg?fit=max&w=2160&q=90",
+            "https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2Fa7%2F4a%2Fshoes-1-3-3c3bb.jpg?fit=max&w=2160&q=90",
+            "https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2Faf%2F79%2Fshoes-1-4-30933.jpg?fit=max&w=2160&q=90"
+          ],
+          "qty": 1
+        },
+        {
+          "id": "f623",
+          "size": "10",
+          "name": "Island Club Adilette 22 Slides",
+          "price": "4,799",
+          "gender": "Man",
+          "type": "Casual",
+          "brand": "Adidas Originals",
+          "img": [
+            "https://images.vegnonveg.com/resized/700X573/10639/adilette-22-bold-green-green-65ae5d7a8511e.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10639/adilette-22-bold-green-green-65ae5d7ab0027.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10639/adilette-22-bold-green-green-65ae5d7b00640.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10639/adilette-22-bold-green-green-65ae5d7b197e2.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10639/adilette-22-bold-green-green-65ae5d7a94db5.jpg"
+          ],
+          "qty": 1
+        },
+        {
+          "id": "9051",
+          "size": "9",
+          "name": "Zurich Suede Leather 'Mink'",
+          "price": "10,990",
+          "category": "Man",
+          "type": "Casual",
+          "brand": "Birkenstock",
+          "img": [
+            "https://images.vegnonveg.com/resized/700X573/10876/zurich-suede-leather-mink-brown-66052092623bc.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10876/zurich-suede-leather-mink-brown-66052092d8194.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10876/zurich-suede-leather-mink-brown-66052092b017b.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10876/zurich-suede-leather-mink-brown-66052092c44fa.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10876/zurich-suede-leather-mink-brown-660520929b0d8.jpg",
+            "https://images.vegnonveg.com/resized/700X573/10876/zurich-suede-leather-mink-brown-660520927e152.jpg"
+          ],
+          "qty": 1
+        }
+      ],
       "confirm_password": "12345678"
     },
     {
@@ -37,6 +106,23 @@
             "https://images.vegnonveg.com/resized/700X573/11530/skyhand-og-whiteblack-white-66d6f161d0632.jpg",
             "https://images.vegnonveg.com/resized/700X573/11530/skyhand-og-whiteblack-white-66d6f161e7457.jpg",
             "https://images.vegnonveg.com/resized/700X573/11530/skyhand-og-whiteblack-white-66d6f161b97e1.jpg"
+          ],
+          "qty": 1
+        },
+        {
+          "id": "1f30",
+          "size": "8",
+          "name": "Asics Gel-NYC 'Feather Grey/Truffle Grey'",
+          "price": "14,999",
+          "gender": "Man",
+          "type": "Casual",
+          "brand": "Asics",
+          "img": [
+            "https://images.vegnonveg.com/resized/700X573/11533/gel-nyc-feather-greytruffle-grey-grey-66d6f656ef740.jpg",
+            "https://images.vegnonveg.com/resized/700X573/11533/gel-nyc-feather-greytruffle-grey-grey-66d6f65778884.jpg",
+            "https://images.vegnonveg.com/resized/700X573/11533/gel-nyc-feather-greytruffle-grey-grey-66d6f6575f801.jpg",
+            "https://images.vegnonveg.com/resized/700X573/11533/gel-nyc-feather-greytruffle-grey-grey-66d6f6574d13a.jpg",
+            "https://images.vegnonveg.com/resized/700X573/11533/gel-nyc-feather-greytruffle-grey-grey-66d6f6571f3d6.jpg"
           ],
           "qty": 1
         }

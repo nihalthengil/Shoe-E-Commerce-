@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../../Context/Context";
+import { Context } from "../../../Context/Context";
 import toast, { Toaster } from 'react-hot-toast';  
 
 const Checkout = () => {

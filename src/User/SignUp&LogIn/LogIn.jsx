@@ -3,7 +3,7 @@ import { Field, Form, Formik } from "formik";
 import React, { useContext } from "react";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 import toast, { Toaster } from "react-hot-toast";
 
 const LogIn = () => {
