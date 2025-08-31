@@ -5,13 +5,11 @@ export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [userId, setUserId] = useState(()=>{
-    return localStorage.getItem("userId")||""
-
+  const [userId, setUserId] = useState(() => {
+    return localStorage.getItem("userId") || "";
   });
-  const [username, setUserName] = useState(()=>{
-    return localStorage.getItem("username")||""
-
+  const [username, setUserName] = useState(() => {
+    return localStorage.getItem("username") || "";
   });
   const [Cart, SetCart] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,7 +18,7 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const data = await axios.get("http://localhost:3000/products");
+        const data = await axios.get("https://shoe-api-3.onrender.com/products");
         setProducts(data.data);
         setLoading(false);
       } catch (error) {
@@ -34,14 +32,16 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const data = await axios.get(`http://localhost:3000/users/${userId}`);        
-        SetCart(data.data.cart);
+        if (userId) {
+          const data = await axios.get(`https://shoe-api-3.onrender.com/users/${userId}`);
+          SetCart(data.data.cart);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     fetchdata();
-  }, []);
+  }, [userId]);
 
   if (loading) {
     return <div>loading...</div>;
@@ -49,6 +49,7 @@ const ContextProvider = ({ children }) => {
   if (error) {
     return <div>{error}</div>;
   }
+
   return (
     <Context.Provider
       value={{
