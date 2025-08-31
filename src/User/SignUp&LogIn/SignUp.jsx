@@ -11,7 +11,7 @@ const initialValues = {
   password: "",
   cart: [],
   role:"user",
-  confirm_password: "",
+  isblocked:false
 };
 
 

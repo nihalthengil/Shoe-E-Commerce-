@@ -5,10 +5,12 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Context/Context";
 import toast, { Toaster } from "react-hot-toast";
+import { AdminContext } from "../../Context/AdminContext";
 
 const LogIn = () => {
   const navigate = useNavigate();
   const { userId, setUserId, username, setUserName } = useContext(Context);
+  const {adminlogin,setAdminlogin}=useContext(AdminContext)
   const initialValues = {
     email: "",
     password: "",
@@ -28,15 +30,21 @@ const LogIn = () => {
     const users = response.data[0];
 
     if (users) {
-      if (users.password === formData.password) {
-        toast.success("Succuss Login");
-        setUserId(users.id);
-        setUserName(users.name);
-        localStorage.setItem("userId", users.id);
-        localStorage.setItem("username", users.name);
-        navigate("/");
+      if (users.role === "admin") {
+        navigate("/admin");
+        setAdminlogin(true) 
+        sessionStorage.setItem("adminlogin",true)
       } else {
-        alert("incorrect password");
+        if (users.password === formData.password) {
+          toast.success("Succuss Login");
+          setUserId(users.id);
+          setUserName(users.name);
+          localStorage.setItem("userId", users.id);
+          localStorage.setItem("username", users.name);
+          navigate("/");
+        } else {
+          alert("incorrect password");
+        }
       }
     }
   };

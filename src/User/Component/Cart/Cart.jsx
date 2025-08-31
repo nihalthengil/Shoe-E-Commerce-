@@ -7,23 +7,39 @@ import { Context } from "../../../Context/Context";
 const Cart = () => {
   const { Cart, SetCart, userId } = useContext(Context);
 
-  const [qty, Setqty] = useState(1);
-  console.log("🚀 ~ Cart ~ Cart:", Cart);
   const RemoveItem = (product) => {
     const filterd = Cart.filter((item) => item.id !== product.id);
     axios.patch(`http://localhost:3000/users/${userId}`, { cart: filterd });
     SetCart(filterd);
   };
 
-  const TotalPrice = Cart.reduce((acc, item) => {
+  const TotalPrice = Cart?.reduce((total, item) => {
     const price = parseInt(item.price.replace(/,/g, ""), 10);
-    return acc + price;
+    return total + price * item.qty;
   }, 0);
 
-  console.log(TotalPrice);
 
-  const Qtycheck = Cart.reduce((acc, item) => acc + item.qty, 0);
-  console.log("🚀 ~ Cart ~ Qtycheck:", Qtycheck)
+  const Qtycheck = Cart?.reduce((total, item) => total + item.qty, 0);
+
+
+  const incrementQuantity = (productId) => {
+    SetCart(
+      Cart.map((item) =>
+        item.id === productId ? { ...item, qty: item.qty + 1 } : item
+      )
+    );
+  };
+
+
+  const decrementQuantity = (productId) => {
+    SetCart(
+      Cart.map((item) =>
+        item.id === productId
+          ? { ...item, qty: Math.max(1, item.qty - 1) }
+          : item
+      )
+    );
+  };
 
   return (
     <div className="flex justify-center flex-col pt-24">
@@ -35,7 +51,7 @@ const Cart = () => {
               <th>Product</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Qty</th>
+              <th className="pl-10">Qty</th>
               <th>Subtotal</th>
             </tr>
           </thead>
@@ -52,9 +68,27 @@ const Cart = () => {
                   <p>Size: {item.size}</p>
                 </td>
                 <td>₹{item.price}</td>
-                <td>1</td>
                 <td>
-                  <p className="font-bold">{item.price}</p>
+                  <div className="flex items-center gap-5">
+                    <button
+                      className="border-none rounded-full  px-2 hover:bg-slate-200 font-semibold"
+                      onClick={() => decrementQuantity(item.id)}
+                    >
+                      -
+                    </button>
+                    <p>{item.qty}</p>
+                    <button
+                      className="border-none rounded-full px-2 hover:bg-slate-200 font-semibold"
+                      onClick={() => incrementQuantity(item.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <p className="font-bold">
+                    {parseFloat(item.price.replace(/,/g, "")) * item.qty}
+                  </p>
                   <button
                     className="text-red-600"
                     onClick={() => RemoveItem(item)}
@@ -94,10 +128,13 @@ const Cart = () => {
 
           <div className="text-center">
             <Link to="/checkout">
-              <button className="bg-black text-white w-96 rounded-sm">Checkout</button>
+              <button className="bg-black text-white w-96 rounded-sm">
+                Checkout
+              </button>
             </Link>
           </div>
-          <br /><br />
+          <br />
+          <br />
         </div>
       )}
     </div>

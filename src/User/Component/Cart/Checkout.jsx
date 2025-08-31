@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../Context/Context";
-import toast, { Toaster } from 'react-hot-toast';  
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const Checkout = () => {
   const [address, setAddress] = useState({
@@ -17,9 +18,9 @@ const Checkout = () => {
   });
 
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState("COD"); // 'COD' or 'DebitCard'
+  const [paymentMethod, setPaymentMethod] = useState("COD");
 
-  const { Cart ,SetCart} = useContext(Context);
+  const { Cart, SetCart,userId } = useContext(Context);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -33,12 +34,42 @@ const Checkout = () => {
     e.preventDefault();
     setIsPaymentVisible(true);
   };
-  
-  const HandleOrder=()=>{
-    toast.success('Order Placed')
-    SetCart([])
-  }
 
+  const HandleOrder = () => {
+    toast.success("Order Placed");
+  
+  
+    const cartItems = Cart.map((item) => ({
+      name: item.name, 
+      quantity: item.quantity || 1,
+      price: item.price,
+      img:item.img[0],
+      brand:item.brand,
+    }));
+  
+    axios.patch(`http://localhost:3000/users/${userId}`, { cart: [] });
+    SetCart([]);
+
+    const orderData = {
+      address: address,
+      products: cartItems, 
+      totalPrice: cartItems.reduce(
+        (total, item) => total + parseFloat(item.price.replace(/,/g, "")),
+        0
+      ),
+    };
+  
+   
+    axios
+      .post("http://localhost:3000/orders", orderData)
+      .then((response) => {
+        console.log("Order successfully placed:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error placing order:", error);
+      });
+  };
+  
   const TotalPrice = Cart.reduce((acc, item) => {
     const price = parseInt(item.price.replace(/,/g, ""), 10);
     return acc + price;
@@ -120,6 +151,7 @@ const Checkout = () => {
             onChange={handleInputChange}
             className="border p-2 rounded w-full"
           >
+            <option value="">Select state</option>
             <option value="Kerala">Kerala</option>
             <option value="Tamil Nadu">Tamil Nadu</option>
             <option value="Karnataka">Karnataka</option>
@@ -223,7 +255,7 @@ const Checkout = () => {
                   className="border p-2 rounded w-full"
                 />
                 <button
-                  type="submit"
+                type="button"
                   className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 w-full"
                   onClick={HandleOrder}
                 >
@@ -237,18 +269,17 @@ const Checkout = () => {
                 <p className="text-gray-600 mb-4">
                   You have selected Cash on Delivery.
                 </p>
-                <button className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-                onClick={HandleOrder}>
+                <button
+                  className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+                  onClick={HandleOrder}
+                >
                   Confirm Order
                 </button>
               </div>
             )}
           </div>
         )}
-        <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
     </div>
   );
